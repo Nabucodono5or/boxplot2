@@ -5,8 +5,7 @@ import { max, min } from "d3-array";
 csv(require("./data/Accidental_Drug_Related_Deaths_2012-2018.csv")).then(
   (data) => {
     console.log(data);
-    // console.log(criandoObjetos(data));
-    console.log(criandoObjetos2(data));
+    console.log(criandoObjetos(data));
   }
 );
 
