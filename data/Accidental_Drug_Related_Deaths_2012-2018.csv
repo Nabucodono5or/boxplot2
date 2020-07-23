@@ -1,8 +1,4 @@
 ID,Date,DateType,Age,Sex,Race,ResidenceCity,ResidenceCounty,ResidenceState,DeathCity,DeathCounty,Location,LocationifOther,DescriptionofInjury,InjuryPlace,InjuryCity,InjuryCounty,InjuryState,COD,OtherSignifican,Heroin,Cocaine,Fentanyl,FentanylAnalogue,Oxycodone,Oxymorphone,Ethanol,Hydrocodone,Benzodiazepine,Methadone,Amphet,Tramad,Morphine_NotHeroin,Hydromorphone,Other,OpiateNOS,AnyOpioid,MannerofDeath,DeathCityGeo,ResidenceCityGeo,InjuryCityGeo
-14-0273,06/28/2014 12:00:00 AM,DateReported,,,,,,,,,,,substance,,,,,"Acute fent, hydrocod, benzodiazepine",,,,Y,,,,,Y,Y,,,,,,,,,Accident,"CT
-(41.575155, -72.738288)","CT
-(41.575155, -72.738288)","CT
-(41.575155, -72.738288)"
 13-0102,03/21/2013 12:00:00 AM,DateofDeath,48,Male,Black,NORWALK,,,NORWALK,FAIRFIELD,Hospital,,,,,,,Cocaine Intoxication,,,Y,,,,,,,,,,,,,,,,Accident,"Norwalk, CT
 (41.11805, -73.412906)","NORWALK, CT
 (41.11805, -73.412906)","CT
@@ -41,10 +37,6 @@ ID,Date,DateType,Age,Sex,Race,ResidenceCity,ResidenceCounty,ResidenceState,Death
 (41.575155, -72.738288)"
 15-0334,07/05/2015 12:00:00 AM,DateReported,49,Female,White,,,,NEW HAVEN,NEW HAVEN,Hospital,,,Unknown,,,,Acute intoxication from the combined effects of heroin and methadone,,Y,,,,,,,,,Y,,,,,,,Y,Accident,"New Haven, CT
 (41.308252, -72.924161)","CT
-(41.575155, -72.738288)","CT
-(41.575155, -72.738288)"
-15-0728,,,,,,,,,,,,,,Unknown,,,,Ruptured Aneurysm of right Iliac Artery with Hemoperitoneum,Acute Cocaine,,Y,,,,,,,,,,,,,,,,Accident,"CT
-(41.575155, -72.738288)","CT
 (41.575155, -72.738288)","CT
 (41.575155, -72.738288)"
 15-0232,05/14/2015 12:00:00 AM,DateReported,50,Male,White,DANBURY,FAIRFIELD,CT,DANBURY,FAIRFIELD,Residence,,,Residence,,,,Heroin Intoxication,,Y,,,,,,,,,,,,,,,,Y,Accident,"DANBURY, CT
@@ -10638,10 +10630,6 @@ ID,Date,DateType,Age,Sex,Race,ResidenceCity,ResidenceCounty,ResidenceState,Death
 (41.769319, -72.643785)","EAST HARTFORD, CT
 (41.769319, -72.643785)","CT
 (41.575155, -72.738288)"
-15-0729,,,28,Male,White,,,,,,,,,Residence,STRATFORD,FAIRFIELD,CT,Acute 2-Aminoindane/2-Indanamine Toxicity,,,,,,,,,,,,,,,,2-A,,,,"CT
-(41.575155, -72.738288)","CT
-(41.575155, -72.738288)","STRATFORD, CT
-(41.200888, -73.131323)"
 18-0412,06/02/2018 12:00:00 AM,DateReported,38,Female,White,WATERBURY,NEW HAVEN,CT,WATERBURY,NEW HAVEN,Residence,,Drug Use,Residence,WATERBURY,NEW HAVEN,,"Acute IntoxicationCombined Effects of Alprazolam, Methadone, Zolpidem, and Cyclobenzaprine",,,,,,,,,,Y,Y,,,,,,,Y,Accident,"Waterbury, CT
 (41.554261, -73.043069)","WATERBURY, CT
 (41.554261, -73.043069)","WATERBURY, CT
@@ -19385,10 +19373,6 @@ ID,Date,DateType,Age,Sex,Race,ResidenceCity,ResidenceCounty,ResidenceState,Death
 (41.537589, -72.8011)","MERIDEN, CT
 (41.537589, -72.8011)","CT
 (41.575155, -72.738288)"
-15-0309,06/28/2015 12:00:00 AM,DateReported,,,,,,,,,,,,Other indoor Area,NORTH WINDHAM,WINDHAM,CT,Acute fentanyl intox,,,,Y,,,,,,,,,,,,,,Y,,"CT
-(41.575155, -72.738288)","CT
-(41.575155, -72.738288)","NORTH WINDHAM, CT
-(41.749401, -72.154999)"
 12-0059,03/01/2012 12:00:00 AM,DateofDeath,51,Female,White,FAIRFIELD,FAIRFIELD,,BRIDGEPORT,FAIRFIELD,Hospital,,Ingestion,Residence,,,,Multiple Drug Toxicity,,,,,,Y,Y,,,Y,,,,,,ketamine,,,Accident,"Bridgeport, CT
 (41.179195, -73.189476)","FAIRFIELD, CT
 (41.143322, -73.249812)","CT

@@ -14,22 +14,29 @@ function formatandoDados(data) {
   data.forEach((element) => {
     let year = new Date(element.Date);
     let encontrado = buscarDadoFormatado(novo, year);
+    let idade = element.Age;
 
     if (!encontrado) {
-      let obj = criarOjetoFormatado(year);
+      let obj = criarOjetoFormatado(year, idade);
       novo.push(obj);
     } else {
       encontrado["number"] += 1;
+      encontrado["somaIdades"] += parseInt(idade);
+      encontrado["idades"].push(parseInt(idade));
     }
   });
 
   return novo;
 }
 
-function criarOjetoFormatado(year) {
+function criarOjetoFormatado(year, idade) {
   let obj = {};
+  let age = parseInt(idade);
   obj["ano"] = year.getFullYear();
   obj["number"] = 1;
+  obj["somaIdades"] = age;
+  obj["idades"] = [];
+  obj["idades"].push(age);
   return obj;
 }
 
