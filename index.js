@@ -10,6 +10,45 @@ csv(require("./data/Accidental_Drug_Related_Deaths_2012-2018.csv")).then(
   }
 );
 
+function quartile1(array) {
+  let q1;
+  let posicao;
+
+  array.sort();
+
+  posicao = (1 / 4) * (array.length + 1);
+  q1 = array[posicao];
+
+  if (posicao % 1 != 0) {
+    let valor1 = array[Math.floor(posicao)];
+    let valor2 = array[Math.ceil(posicao)];
+
+    q1 = (valor1 + valor2) / 2;
+  }
+
+  return q1;
+}
+
+function quartile3(array) {
+  let q3;
+  let posicao;
+
+  array.sort();
+
+  posicao = (3 / 4) * (array.length + 1);
+
+  if (posicao % 1 != 0) {
+    let valor1 = array[Math.floor(posicao)];
+    let valor2 = array[Math.ceil(posicao)];
+
+    q3 = (valor1 + valor2) / 2;
+  }else{
+    q3 = array[posicao];
+  }
+
+  return q3;
+}
+
 function contabilizandoDados(novo) {
   novo.forEach((element) => {
     let maiorIdade = max(element.idades, (d) => {
@@ -25,6 +64,8 @@ function contabilizandoDados(novo) {
     element["max"] = maiorIdade;
     element["media"] = mediaIdades;
     element["mediana"] = Math.round(mediana);
+    element["q1"] = quartile1(element.idades);
+    element["q3"] = quartile3(element.idades);
   });
 
   return novo;
