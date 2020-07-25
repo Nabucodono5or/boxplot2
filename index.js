@@ -1,12 +1,16 @@
 import { select, selectAll } from "d3-selection";
+import { scaleLinear, scaleTime } from "d3-scale";
 import { csv } from "d3-fetch";
-import { max, min } from "d3-array";
+import { max, min, extent } from "d3-array";
+import { axisBottom, axisRight } from "d3-axis";
 
 csv(require("./data/Accidental_Drug_Related_Deaths_2012-2018.csv")).then(
   (data) => {
     let novo = formatandoDados(data);
-    console.log(formatandoDados(data));
-    console.log(contabilizandoDados(novo));
+    let resultadoData = contabilizandoDados(novo);
+    console.log(novo);
+    console.log(resultadoData);
+    boxsplot(resultadoData);
   }
 );
 
@@ -42,7 +46,7 @@ function quartile3(array) {
     let valor2 = array[Math.ceil(posicao)];
 
     q3 = (valor1 + valor2) / 2;
-  }else{
+  } else {
     q3 = array[posicao];
   }
 
@@ -108,4 +112,83 @@ function buscarDadoFormatado(arrayFormatado, year) {
   });
 
   return encontrado;
+}
+
+function boxsplot(incomingData) {
+  let maxYear = max(incomingData, (d) => {
+    return d.ano;
+  });
+  let minYear = min(incomingData, (d) => {
+    return d.ano;
+  });
+
+  let timeYear = scaleTime()
+    .domain([new Date(minYear - 1, 0, 1), new Date(maxYear, 0, 1)])
+    .range([20, 470]);
+
+  let yScale = scaleLinear().domain([0, 100]).range([470, 0]);
+
+  let xAxis = axisBottom(timeYear).ticks(10);
+  let yAxis = axisRight(yScale);
+
+  select("svg")
+    .append("g")
+    .attr("class", "yAxis")
+    .attr("transform", "translate(20, 0)")
+    .style("opacity", 0.4)
+    .call(yAxis);
+
+  select("svg")
+    .append("g")
+    .attr("class", "xAxis")
+    .attr("tranform", "translate(10, 470)")
+    .style("opacity", 0.4)
+    .call(xAxis);
+
+  select("svg")
+    .selectAll("g.box")
+    .data(incomingData)
+    .enter()
+    .append("g")
+    .attr("class", "box")
+    .attr("transform", function (d) {
+      return (
+        "translate(" +
+        timeYear(new Date(d.ano, 0, 1)) +
+        ", " +
+        yScale(d.mediana) +
+        ")"
+      );
+    })
+    .each(function (d) {
+      select(this)
+        .append("line")
+        .attr("class", "range")
+        .attr("x1", 0)
+        .attr("x2", 0)
+        .attr("y1", yScale(d.max) - yScale(d.mediana))
+        .attr("y2", yScale(d.min) - yScale(d.mediana))
+        .style("stroke", "black")
+        .style("stroke-width", "1px");
+
+      select(this)
+        .append("line")
+        .attr("class", "max")
+        .attr("x1", -10)
+        .attr("x2", 10)
+        .attr("y1", yScale(d.max) - yScale(d.mediana))
+        .attr("y2", yScale(d.max) - yScale(d.mediana))
+        .style("stroke", "black")
+        .style("stroke-width", "1px");
+
+      select(this)
+        .append("line")
+        .attr("class", "min")
+        .attr("x1", -10)
+        .attr("x2", 10)
+        .attr("y1", yScale(d.min) - yScale(d.mediana))
+        .attr("y2", yScale(d.min) - yScale(d.mediana))
+        .style("stroke", "black")
+        .style("stroke-width", "1px");
+    });
 }
