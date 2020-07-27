@@ -2,7 +2,7 @@ import { select, selectAll } from "d3-selection";
 import { scaleLinear, scaleTime } from "d3-scale";
 import { csv } from "d3-fetch";
 import { max, min, extent } from "d3-array";
-import { axisBottom, axisRight } from "d3-axis";
+import { axisBottom, axisRight, axisTop, axisLeft } from "d3-axis";
 
 csv(require("./data/Accidental_Drug_Related_Deaths_2012-2018.csv")).then(
   (data) => {
@@ -125,24 +125,22 @@ function boxsplot(incomingData) {
   let timeYear = scaleTime()
     .domain([new Date(minYear - 1, 0, 1), new Date(maxYear, 0, 1)])
     .range([20, 470]);
-
   let yScale = scaleLinear().domain([0, 100]).range([470, 0]);
-
-  let xAxis = axisBottom(timeYear).ticks(10);
-  let yAxis = axisRight(yScale);
+  let xAxis = axisBottom(timeYear).ticks(10).tickSize(-459).tickPadding(10);
+  let yAxis = axisLeft(yScale).tickSize(-470);
 
   select("svg")
     .append("g")
     .attr("class", "yAxis")
-    .attr("transform", "translate(20, 0)")
-    .style("opacity", 0.4)
+    .attr("transform", "translate(20, -10)")
+    .style("stroke", "#caf0f8")
     .call(yAxis);
 
   select("svg")
     .append("g")
     .attr("class", "xAxis")
-    .attr("tranform", "translate(10, 470)")
-    .style("opacity", 0.4)
+    .attr("transform", "translate(0, 459)")
+    .style("stroke", "#caf0f8")
     .call(xAxis);
 
   select("svg")
@@ -168,8 +166,8 @@ function boxsplot(incomingData) {
         .attr("x2", 0)
         .attr("y1", yScale(d.max) - yScale(d.mediana))
         .attr("y2", yScale(d.min) - yScale(d.mediana))
-        .style("stroke", "black")
-        .style("stroke-width", "1px");
+        .style("stroke", "#023e8a")
+        .style("stroke-width", "3px");
 
       select(this)
         .append("line")
@@ -178,8 +176,8 @@ function boxsplot(incomingData) {
         .attr("x2", 10)
         .attr("y1", yScale(d.max) - yScale(d.mediana))
         .attr("y2", yScale(d.max) - yScale(d.mediana))
-        .style("stroke", "black")
-        .style("stroke-width", "1px");
+        .style("stroke", "#023e8a")
+        .style("stroke-width", "3px");
 
       select(this)
         .append("line")
@@ -188,7 +186,26 @@ function boxsplot(incomingData) {
         .attr("x2", 10)
         .attr("y1", yScale(d.min) - yScale(d.mediana))
         .attr("y2", yScale(d.min) - yScale(d.mediana))
-        .style("stroke", "black")
+        .style("stroke", "#023e8a")
+        .style("stroke-width", "3px");
+
+      select(this)
+        .append("rect")
+        .attr("class", "distribuition")
+        .attr("height", yScale(d.q1) - yScale(d.q3))
+        .attr("y", yScale(d.q3) - yScale(d.media))
+        .attr("width", 20)
+        .attr("x", -10)
+        .style("stroke", "#03045e")
+        .style("fill", "#ade8f4")
         .style("stroke-width", "1px");
+
+      select(this)
+        .append("line")
+        .attr("class", "median")
+        .attr("x1", -10)
+        .attr("x2", 10)
+        .style("stroke", "#0096c7")
+        .style("stroke-width", "4px");
     });
 }
